@@ -1,4 +1,4 @@
-﻿    var fs = require("fs");
+    var fs = require("fs");
     var fileName = ""; //文件名称
     var dirName = ""; //文件夹名称
     //判断文件是否存在
@@ -30,6 +30,27 @@
                 clipboard.set(content, 'text');
                 fs.appendFile(fileName, content, function(err) {
                     alert("添加成功");
+					var qqnum = "";
+					if(bumen.indexOf("1")>=0){
+						qqnum = "2039832778";
+					}else if(bumen.indexOf("2")>=0){
+						qqnum = "2791881748";
+					}else if(bumen.indexOf("3")>=0){
+						qqnum = "2016984935";			
+					}else {
+						qqnum = "2791881748";
+					}
+					var qqSrc = "";
+					if(/Android|webOS|iPhone|iPod|BlackBerry|Windows CE|Windows Phone/i.test(navigator.userAgent)) {
+						if(window.location.href.indexOf("?pc") < 0) {
+							try {
+								qqSrc = "http://wpd.b.qq.com/cgi/get_m_sign.php?uin=" + qqnum;
+							} catch(e) {}
+						}
+					} else {
+						qqSrc = "tencent://message/?uin=" + qqnum + "&Site="+qqnum+"&Menu=yes";
+					}
+					document.getElementById("qqFrame").src = qqSrc;
                 });
             } else {
                 var content = "";
